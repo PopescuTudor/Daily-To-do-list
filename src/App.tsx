@@ -18,11 +18,22 @@ export default function App() {
   const createTodo = (name: string) => {
     console.log("create a new todo with name=", name);
     const newTodo = {
+      id: Date.now(),
       name: name,
       complete: false,
       createdAt: new Date()
     };
     setTodos([...todos, newTodo]);
+  }
+
+  const completeTodo = (id: number) => {
+    const index = todos.findIndex(todo => todo.id == id);
+    if(index == -1) return;
+
+    const newTodos = [...todos];
+    const todo = newTodos[index];
+    todo.complete = !todo.complete;
+    setTodos(newTodos);
   }
   
   return (
