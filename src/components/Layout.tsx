@@ -8,10 +8,7 @@ const Layout = (props: Props) => {
   return (
     <Background>
       <Card>
-        <Title>
           {props.children}
-        </Title>
-
       </Card>
     </Background>
   )
@@ -36,15 +33,9 @@ const Card = styled.div`
   background: #FFF;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   padding-top: 42px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
-const Title = styled.span`
-  color: #11175E;
-  font-family: 'Rubik';
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: 0.48px;
-  margin-left: 200px;
-`;
+
