@@ -4,7 +4,7 @@ import Layout from './components/Layout';
 import TodoForm from './components/TodoForm';
 import Todo from './components/Data';
 import TodoElem from './components/TodoElem';
-
+import TodoList from './components/TodoList';
 import 'normalize.css'
 
 
@@ -24,9 +24,10 @@ export default function App() {
   }
 
   const completeTodo = (id: number) => {
+    console.log(id);
     const index = todos.findIndex(todo => todo.id == id);
     if (index == -1) return;
-
+    
     const newTodos = [...todos];
     const todo = newTodos[index];
     todo.complete = !todo.complete;
@@ -36,7 +37,7 @@ export default function App() {
   return (
     <Layout>
       <TodoForm onSubmit={createTodo} />
-      <TodoElem elems={todos} check={completeTodo} />
+      <TodoList elems={todos} check={completeTodo} />
     </Layout>
   )
 }
