@@ -1,7 +1,8 @@
-import {useState} from 'react';
+import { useState } from 'react';
 
 import Layout from './components/Layout';
 import TodoForm from './components/TodoForm';
+import TodoElem from './components/TodoElem';
 
 import 'normalize.css'
 
@@ -28,17 +29,18 @@ export default function App() {
 
   const completeTodo = (id: number) => {
     const index = todos.findIndex(todo => todo.id == id);
-    if(index == -1) return;
+    if (index == -1) return;
 
     const newTodos = [...todos];
     const todo = newTodos[index];
     todo.complete = !todo.complete;
     setTodos(newTodos);
   }
-  
+
   return (
     <Layout>
-      <TodoForm onSubmit = {createTodo} />
+      <TodoForm onSubmit={createTodo} />
+      <TodoElem check={completeTodo} />
     </Layout>
   )
 }
