@@ -2,15 +2,11 @@ import { useState } from 'react';
 
 import Layout from './components/Layout';
 import TodoForm from './components/TodoForm';
+import Todo from './components/Data';
 import TodoElem from './components/TodoElem';
 
 import 'normalize.css'
 
-type Todo = {
-  name: string;
-  complete: boolean;
-  createdAt: Date;
-}
 
 export default function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -40,7 +36,7 @@ export default function App() {
   return (
     <Layout>
       <TodoForm onSubmit={createTodo} />
-      <TodoElem check={completeTodo} />
+      <TodoElem elems={todos} check={completeTodo} />
     </Layout>
   )
 }

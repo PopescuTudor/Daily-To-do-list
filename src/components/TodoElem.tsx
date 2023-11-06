@@ -1,31 +1,28 @@
-import {useState} from 'react'
-import styled from 'styled-components'
+import { useState } from 'react';
+import styled from 'styled-components';
+import Todo from './Data';
 
 type Props = {
-  name: string
-  check: (name: string) => void
-
-const TodoElem = (props: Props) => {
-  const [isChomplete, setIsComplete] = useState(false)
-  
-  const toggle = () => {
-    setIsComplete(!isComplete)
-    check(props.name);
-  }
-  
-  return (
-    <TodoElemStyled>
-      <input type="checkbox" checked={isComplete} onChange={toggle} />
-      <p>{props.name}</p>
-      <button onClick={toggle}>Delete</button>
-    </TodoElemStyled>
-  )
+  elems: Todo[];
+  check: (id: number) => void;
 }
+const TodoElem = (props: Props) => {
   
+  for (let i = 0; i < 1; i++) {
+    const elem = props.elems[i];
+    return (
+      <TodoElemStyled>
+        <input type="checkbox" checked={elem.complete} onChange={props.check(elem.id)} />
+        <p>{elem.name}</p>
+      </TodoElemStyled>
+    )
+  }
+
+}
+
 const TodoElemStyled = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
+  height: 50px;
+  width:300px;
 
 `;
 
